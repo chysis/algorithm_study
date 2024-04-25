@@ -16,8 +16,6 @@ int main()
         cin>>N>>M;
         if(N==0 && M==0) break;
         
-        memset(dp, 0, sizeof(dp));
-        
         int ans=0;
         for(int i=1; i<=N; i++){
             for(int j=1; j<=M; j++){
@@ -30,5 +28,7 @@ int main()
         }
         
         cout<<ans<<"\n";
+        
+        memset(dp, 0, sizeof(dp));
     }
 }
