@@ -60,14 +60,6 @@ int bfs(){
         }
     }
     
-    // for(int i=0; i<N; i++){
-    //     for(int j=0; j<N; j++){
-    //         cout<<copyMap[i][j]<<" ";
-    //     }
-    //     cout<<"\n";
-    // }
-    // cout<<"\n";
-    
     int tempAns=-1;
     for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
@@ -84,15 +76,11 @@ int bfs(){
 
 void solve(int cnt, int idx){
     if(cnt==M){
-        // for(int i=0; i<M; i++){
-        //     cout<<virusTemp[i]<<" ";
-        // }
-        // cout<<"\n\n";
-        
         int temp=bfs();
         if(temp!=-1){
             ans=min(ans, temp);
         }
+        
         return;
     }
     
