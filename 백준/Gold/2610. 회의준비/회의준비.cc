@@ -75,16 +75,6 @@ int main()
         }
     }
     
-    // for(int k=1; k<=groupCnt; k++){
-    //     for(int i=0; i<group[k].size(); i++){
-    //         for(int j=0; j<group[k].size(); j++){
-    //             cout<<floyd[k][i][j]<<" ";
-    //         }
-    //         cout<<"\n";
-    //     }
-    //     cout<<"\n";
-    // }
-    
     cout<<groupCnt<<"\n";
     
     vector<int> ans;
