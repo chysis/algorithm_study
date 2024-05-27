@@ -13,8 +13,8 @@ struct Trie{
         
         for(int i=0; i<str.length(); i++){
             if(!now->child[str[i]]){
-                Trie* newTrie=new Trie();
-                now->child[str[i]]=newTrie;
+                // Trie* newTrie=new Trie();
+                now->child[str[i]]=new Trie();
             }
             now=now->child[str[i]];
             
