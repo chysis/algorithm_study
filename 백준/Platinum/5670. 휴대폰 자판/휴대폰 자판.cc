@@ -5,7 +5,7 @@
 using namespace std;
 
 struct Trie{
-    bool isEnd;
+    bool isEnd=false;
     map<char, Trie*> child;
     
     void insert(string& str){
@@ -13,7 +13,7 @@ struct Trie{
         
         for(int i=0; i<str.length(); i++){
             if(!now->child[str[i]]){
-                now->child[str[i]]=new Trie();
+                now->child[str[i]]=new Trie;
             }
             now=now->child[str[i]];
             
@@ -45,12 +45,14 @@ int main()
     
     int N;
     while(cin>>N){
-        vector<string> v(N);
+        vector<string> v;
         for(int i=0; i<N; i++){
-            cin>>v[i];
+            string str;
+            cin>>str;
+            v.push_back(str);
         }
         
-        Trie* trie=new Trie();
+        Trie* trie=new Trie;
         for(int i=0; i<N; i++){
             trie->insert(v[i]);
         }
@@ -61,6 +63,7 @@ int main()
         }
         cout<<sum/N<<"\n";
         
+        v.clear();
         delete trie;
     }
 }
