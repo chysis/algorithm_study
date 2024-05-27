@@ -1,19 +1,18 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <unordered_map>
+#include <map>
 using namespace std;
 
 struct Trie{
     bool isEnd;
-    unordered_map<char, Trie*> child;
+    map<char, Trie*> child;
     
     void insert(string& str){
         Trie* now=this;
         
         for(int i=0; i<str.length(); i++){
             if(!now->child[str[i]]){
-                // Trie* newTrie=new Trie();
                 now->child[str[i]]=new Trie();
             }
             now=now->child[str[i]];
