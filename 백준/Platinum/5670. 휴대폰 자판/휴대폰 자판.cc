@@ -59,7 +59,7 @@ int main()
         for(int i=0; i<N; i++){
             sum+=trie->solve(v[i]);
         }
-        cout<<sum/double(N)<<"\n";
+        cout<<sum/N<<"\n";
         
         delete trie;
     }
