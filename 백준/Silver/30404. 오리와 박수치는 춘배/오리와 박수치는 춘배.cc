@@ -22,11 +22,8 @@ int main()
         if(arr[cur]+K<arr[idx]) {
             ans++;
             cur=idx;
-            idx++;
         }
-        else{
-            idx++;
-        }
+        idx++;
     }
     
     cout<<ans+1;
