@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <queue>
 using namespace std;
 
 int N,M;
@@ -9,6 +10,8 @@ bool visited[301][301];
 int dx[4]={-1, 1, 0, 0};
 int dy[4]={0, 0, -1, 1};
 int cnt=0;
+
+queue<pair<int, int>> q;
 
 bool noIce(){
     for(int i=0; i<N; i++){
@@ -57,10 +60,28 @@ void dfs(int x, int y){
     }
 }
 
+void bfs(){
+    while(!q.empty()){
+        int curX=q.front().first;
+        int curY=q.front().second;
+        q.pop();
+        
+        for(int i=0; i<4; i++){
+            int nx=curX+dx[i];
+            int ny=curY+dy[i];
+            
+            if(nx>=0 && nx<N && ny>=0 && ny<M && !visited[nx][ny] && ice[nx][ny]>0){
+                q.push({nx, ny});
+                visited[nx][ny]=true;
+            }
+        }
+    }
+}
+
 int main()
 {
-    cin.tie(NULL);
     ios::sync_with_stdio(false);
+    cin.tie(NULL);
     
     cin>>N>>M;
     for(int i=0; i<N; i++){
@@ -74,7 +95,9 @@ int main()
         for(int i=0; i<N; i++){
             for(int j=0; j<M; j++){
                 if(!visited[i][j] && ice[i][j]>0){
-                    dfs(i, j);
+                    q.push({i, j});
+                    // dfs(i, j);
+                    bfs();
                     cnt++;
                 }
             }
