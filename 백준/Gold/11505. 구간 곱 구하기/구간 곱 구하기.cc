@@ -26,14 +26,14 @@ ll solve(vll& tree, int node, int left, int right, int start, int end){
     return (solve(tree, node*2, left, right, start, mid) * solve(tree, node*2+1, left, right, mid+1, end)) % DIV;
 }
 
-ll update(vll& tree, int node, int start, int end, int index, ll prevValue, ll newValue){
+ll update(vll& tree, int node, int start, int end, int index, ll newValue){
     if(index<start || index>end) return tree[node];
     if(start==end) return tree[node]=newValue;
     
     if(start!=end){
         int mid=(start+end)/2;
-        return tree[node]=(update(tree, node*2, start, mid, index, prevValue, newValue)*
-        update(tree, node*2+1, mid+1, end, index, prevValue, newValue))%DIV;
+        return tree[node]=(update(tree, node*2, start, mid, index, newValue)*
+        update(tree, node*2+1, mid+1, end, index, newValue))%DIV;
     }
 }
 
@@ -62,9 +62,8 @@ int main()
         cin>>A;
         if(A==1){
             cin>>B>>C;
-            ll prev=arr[B];
             arr[B]=C;
-            update(tree, 1, 1, N, B, prev, C);
+            update(tree, 1, 1, N, B, C);
         } else if(A==2){
             cin>>B>>C;
             cout<<solve(tree, 1, B, C, 1, N)<<"\n";
