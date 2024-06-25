@@ -10,13 +10,20 @@ int main()
     cin>>N;
     cout<<"YES\n";
     
-    if(N==3){
-        cout<<"3 1 2";
-        return 0;
-    }
-    
     int arr[4]={1, 2, 4, 3};
-    for(int i=0; i<N; i++){
-        cout<<arr[i%4]+4*(i/4)<<" ";
+    if(N%4==2){
+        for(int i=1; i<=N; i++){
+            if(i%4==1) cout<<i+1<<" ";
+            else if(i%4==2) cout<<i-1<<" ";
+            else if(i%4==3) cout<<i<<" ";
+            else if(i%4==0) cout<<i<<" ";
+        }
+    } else{
+        for(int i=1; i<=N; i++){
+            if(i%4==1) cout<<i<<" ";
+            else if(i%4==2) cout<<i+1<<" ";
+            else if(i%4==3) cout<<i-1<<" ";
+            else if(i%4==0) cout<<i<<" ";
+        }
     }
 }
