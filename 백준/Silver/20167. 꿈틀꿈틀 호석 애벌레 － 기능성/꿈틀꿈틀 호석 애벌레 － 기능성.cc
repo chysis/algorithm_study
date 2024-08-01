@@ -7,13 +7,12 @@ int arr[21], dp[21];
 
 void solve(int cnt, int sati, int energy){
     if(cnt==N) {
-        if(sati>=K) energy+=(sati-K);
         ans=max(ans, energy);
         return;
     }
     
     // 안 먹으면?
-    solve(cnt+1, sati, energy);
+    if(sati==0) solve(cnt+1, sati, energy);
     
     // 먹으면?
     if(sati+arr[cnt]>=K) solve(cnt+1, 0, energy+sati+arr[cnt]-K);
