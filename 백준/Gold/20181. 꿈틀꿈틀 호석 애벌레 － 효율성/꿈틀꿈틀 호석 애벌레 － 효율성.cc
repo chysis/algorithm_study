@@ -2,7 +2,8 @@
 #include <algorithm>
 using namespace std;
 
-int arr[100001], dp[100001];
+int arr[100001];
+long long dp[100001];
 
 int main()
 {
@@ -15,8 +16,10 @@ int main()
         cin>>arr[i];
     }
     
-    int s=1, e=1, sum=arr[1];
+    int s=1, e=1;
+    long long sum=arr[1];
     while(s<=N && e<=N){
+        dp[e]=max(dp[e], dp[e-1]);
         if(sum>=K){
             dp[e]=max(dp[e], dp[s-1]+sum-K);
             
@@ -31,7 +34,7 @@ int main()
                 s++;
                 e++;
                 sum=arr[e];
-                dp[e]=max(dp[e], dp[e-1]);
+                
             } else if(s<e){
                 s++;
                 sum-=arr[s-1];
@@ -39,13 +42,13 @@ int main()
         } else{
             e++;
             sum+=arr[e];
-            dp[e]=max(dp[e], dp[e-1]);
         }
     }
     
     // for(int i=1; i<=N; i++){
     //     cout<<dp[i]<<" ";
     // }
+    // cout<<"\n";
     
     cout<<dp[N];
 }
