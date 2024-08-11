@@ -16,10 +16,9 @@ int main()
     }
     
     int s=1, e=1, sum=arr[1];
-    int sMax=-1;
     while(s<=N && e<=N){
         if(sum>=K){
-            dp[e]=max(dp[e], sMax+sum-K);
+            dp[e]=max(dp[e], dp[s-1]+sum-K);
             
             // cout<<"s: "<<s<<" "<<"e: "<<e<<" sum: "<<sum<<"\n";
             
@@ -32,15 +31,14 @@ int main()
                 s++;
                 e++;
                 sum=arr[e];
-                sMax=max(sMax, dp[s-1]);
             } else if(s<e){
                 s++;
                 sum-=arr[s-1];
-                sMax=max(sMax, dp[s-1]);
             }
         } else{
             e++;
             sum+=arr[e];
+            dp[e]=dp[e-1];
         }
     }
     
