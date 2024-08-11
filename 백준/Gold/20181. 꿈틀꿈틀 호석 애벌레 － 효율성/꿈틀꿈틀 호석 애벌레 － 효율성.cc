@@ -31,6 +31,7 @@ int main()
                 s++;
                 e++;
                 sum=arr[e];
+                dp[e]=max(dp[e], dp[e-1]);
             } else if(s<e){
                 s++;
                 sum-=arr[s-1];
@@ -38,7 +39,7 @@ int main()
         } else{
             e++;
             sum+=arr[e];
-            dp[e]=dp[e-1];
+            dp[e]=max(dp[e], dp[e-1]);
         }
     }
     
