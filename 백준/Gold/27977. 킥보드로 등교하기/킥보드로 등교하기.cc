@@ -32,8 +32,7 @@ int main()
         for(int i=1; i<=N+1; i++){
             if(arr[i]-cur>m){
                 cnt++;
-                if(arr[i]-cur==m) cur=arr[i];
-                else cur=arr[i-1];
+                cur=arr[i-1];
             }
         }
         
