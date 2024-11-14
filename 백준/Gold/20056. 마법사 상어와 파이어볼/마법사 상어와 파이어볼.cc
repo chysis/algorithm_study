@@ -42,16 +42,6 @@ void rearrange_list(){
     }
 }
 
-void print(){
-    for(int i=1; i<=N; i++){
-        for(int j=1; j<=N; j++){
-            cout<<arr[i][j].size()<<" ";
-        }
-        cout<<"\n";
-    }
-    cout<<"\n";
-}
-
 void initTempArr(){
     for(int i=1; i<=N; i++){
         for(int j=1; j<=N; j++){
