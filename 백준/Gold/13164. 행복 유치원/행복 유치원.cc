@@ -4,10 +4,6 @@ using namespace std;
 
 int arr[300001], diff[300001];
 
-bool comp(int a, int b){
-    return a>b;
-}
-
 int main()
 {
     ios::sync_with_stdio(false);
@@ -23,11 +19,11 @@ int main()
         diff[i]=arr[i+1]-arr[i];
     }
     
-    sort(diff, diff+N-1, comp);
+    sort(diff, diff+N-1);
     
     int ans=arr[N-1]-arr[0];
     for(int i=0; i<K-1; i++){
-        ans-=diff[i];
+        ans-=diff[N-2-i];
     }
     
     cout<<ans;
