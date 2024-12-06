@@ -6,6 +6,7 @@ using namespace std;
 
 pair<int, int> arr[1000001];
 priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+vector<pair<int, int>> v;
 
 int main()
 {
@@ -21,19 +22,19 @@ int main()
     }
     
     for(int i=0; i<N; i++){
-        pq.push({arr[i].first, 1});
-        pq.push({arr[i].second, -1});
+        v.push_back({arr[i].first, 1});
+        v.push_back({arr[i].second, -1});
     }
     
+    sort(v.begin(), v.end());
+    
     int ans=0, temp=0;
-    while(!pq.empty()){
-        if(pq.top().second==1) {
+    for(int i=0; i<v.size(); i++){
+        if(v[i].second==1) {
             temp++;
             ans=max(ans, temp);
         }
         else temp--;
-        
-        pq.pop();
     }
     
     cout<<ans;
