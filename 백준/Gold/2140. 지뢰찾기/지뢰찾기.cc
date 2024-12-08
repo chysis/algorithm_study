@@ -6,16 +6,6 @@ char map[101][101];
 int dx[8]={-1, -1, 0, 1, 1, 1, 0, -1};
 int dy[8]={0, 1, 1, 1, 0, -1, -1, -1};
 
-void print(){
-    for(int i=0; i<N; i++){
-        for(int j=0; j<N; j++){
-            cout<<map[i][j]<<" ";
-        }
-        cout<<"\n";
-    }
-    cout<<"\n";
-}
-
 int main()
 {
     ios::sync_with_stdio(false);
