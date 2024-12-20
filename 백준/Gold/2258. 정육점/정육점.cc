@@ -28,16 +28,16 @@ int main()
     for(int i=0; i<N; i++){
         if(sumWeight<M){
             if(meat[i].second!=tempPrice){
-                sumWeight+=meat[i].first;
                 sumPrice=meat[i].second;
                 tempPrice=meat[i].second;
             }else{
-                sumWeight+=meat[i].first;
                 sumPrice+=meat[i].second;
             }
+            sumWeight+=meat[i].first;
         }else{
-            if(meat[i].second!=tempPrice && sumPrice>meat[i].first){
-                sumPrice=min(sumPrice, meat[i].second);
+            if(meat[i].second!=tempPrice && sumPrice>meat[i].second){
+                sumPrice=meat[i].second;
+                break;
             }
         }
     }
