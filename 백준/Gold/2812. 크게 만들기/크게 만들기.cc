@@ -14,17 +14,14 @@ int main()
     string str;
     cin>>N>>K>>str;
     
-    int cnt=0;
     for(int i=0; i<N; i++){
         int cur=str[i]-'0';
-        while(!v.empty() && v.back()<cur && cnt<K){
+        while(!v.empty() && v.back()<cur && K>0){
             v.pop_back();
-            cnt++;
+            K--;
         }
         v.push_back(cur);
     }
     
-    for(int i=0; i<K-cnt; i++) v.pop_back();
-    
-    for(auto a: v) cout<<a;
+    for(int i=0; i<v.size()-K; i++) cout<<v[i];
 }
