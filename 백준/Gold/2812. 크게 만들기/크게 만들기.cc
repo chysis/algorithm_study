@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-vector<int> v;
+vector<char> v;
 
 int main()
 {
@@ -15,12 +15,11 @@ int main()
     cin>>N>>K>>str;
     
     for(int i=0; i<N; i++){
-        int cur=str[i]-'0';
-        while(!v.empty() && v.back()<cur && K>0){
+        while(!v.empty() && v.back()<str[i] && K>0){
             v.pop_back();
             K--;
         }
-        v.push_back(cur);
+        v.push_back(str[i]);
     }
     
     for(int i=0; i<v.size()-K; i++) cout<<v[i];
