@@ -42,11 +42,11 @@ int main()
         int curColor=get<1>(arr[i]);
         int curSize=get<2>(arr[i]);
         
-        int sameColorDiffSizeCnt=v[curSize].total-v[curSize].um[curColor];
+        int sameSizeDiffColorCnt=v[curSize].total-v[curSize].um[curColor];
 
         total+=curSize;
         sum[curColor]+=curSize;
-        ans[curId]=total-sum[curColor]-sameColorDiffSizeCnt*curSize;
+        ans[curId]=total-sum[curColor]-sameSizeDiffColorCnt*curSize;
         
         v[curSize].total++;
         if(v[curSize].um.find(curColor)!=v[curSize].um.end()) v[curSize].um[curColor]++;
