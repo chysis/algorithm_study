@@ -40,11 +40,6 @@ int main()
         sum[i]=sum[i-1]+delta[i];
     }
     
-    // for(int i=0; i<=mx; i++){
-    //     cout<<sum[i]<<" ";
-    // }
-    // cout<<"\n";
-    
     if(sum[mx]<K){
         cout<<0<<" "<<0;
         return 0;
@@ -53,9 +48,8 @@ int main()
     int s=0, e=0;
     pair<int, int> ans={INF, INF};
     bool flag=false;
-    while(s<=e){
+    while(e<=mx){
         int diff=sum[e]-sum[s];
-        // cout<<"cur: "<<s<<" "<<e<<" "<<diff<<"\n";
         
         if(diff<K) e++;
         else if(diff>K) s++;
