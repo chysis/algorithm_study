@@ -16,7 +16,10 @@ int bfs(){
         
         if(cur==S) return cnt;
 
-        q.push({cur, cur, cnt+1});
+        if(!visited[cur][cur]){
+            q.push({cur, cur, cnt+1});
+            visited[cur][cur]=true;
+        }
         
         if(!visited[cur+clipboard][clipboard] && cur+clipboard<=S){
             q.push({cur+clipboard, clipboard, cnt+1});
