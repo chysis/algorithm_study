@@ -58,6 +58,11 @@ int main()
         }
     }
     
+    if(N==1){
+        cout<<0;
+        return 0;
+    }
+    
     solve();
     
     cout<<dist[N-1][N-1];
