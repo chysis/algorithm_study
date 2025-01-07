@@ -9,7 +9,7 @@ using namespace std;
 int N, map[51][51], dist[51][51];
 int dx[4]={-1, 1, 0, 0};
 int dy[4]={0, 0, -1, 1};
-priority_queue<pipii, vector<pipii>, less<pipii>> pq;
+priority_queue<pipii, vector<pipii>, greater<pipii>> pq;
 
 void solve(){
     pq.push({0, {0, 0}});
