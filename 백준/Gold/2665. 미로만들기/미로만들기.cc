@@ -6,7 +6,8 @@
 #define INF 987654321
 using namespace std;
 
-int N, map[51][51], dist[51][51];
+char map[51][51];
+int N, dist[51][51];
 int dx[4]={-1, 1, 0, 0};
 int dy[4]={0, 0, -1, 1};
 priority_queue<pipii, vector<pipii>, greater<pipii>> pq;
@@ -27,7 +28,7 @@ void solve(){
             int ny=y+dy[i];
             if(nx<0 || ny<0 || nx>=N || ny>=N) continue;
             
-            int nextDist=(map[nx][ny]==1 ? curDist : curDist+1);
+            int nextDist=(map[nx][ny]=='1' ? curDist : curDist+1);
             
             if(nextDist<dist[nx][ny]){
                 dist[nx][ny]=nextDist;
@@ -52,9 +53,7 @@ int main()
     
     for(int i=0; i<N; i++){
         for(int j=0; j<N; j++){
-            char c;
-            cin>>c;
-            map[i][j]=c-'0';
+            cin>>map[i][j];
         }
     }
     
