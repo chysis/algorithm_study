@@ -21,15 +21,13 @@ void solve(){
         if(curDist>dist[curNode]) continue;
         
         for(int i=1; i<=N; i++){
-            if(curNode==i || adj[curNode][i]==0) continue;
+            if(curNode==i || !adj[curNode][i]) continue;
             
             int nextDist=curDist+adj[curNode][i];
             if(nextDist<dist[i]){
                 dist[i]=nextDist;
                 pq.push({nextDist, i});
                 path[i].clear();
-                path[i].push_back(curNode);
-            } else if(nextDist==dist[i]){
                 path[i].push_back(curNode);
             }
         }
@@ -59,5 +57,4 @@ int main()
     for(int i=2; i<=N; i++){
         cout<<i<<" "<<path[i].back()<<"\n";
     }
-    
 }
