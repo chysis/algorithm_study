@@ -25,28 +25,17 @@ void addEdge(int s, int e, int t){
     }
 }
 
-bool solve(int start){
-    dist[start]=0;
-    
-    for(int i=0; i<N-1; i++){
+bool solve(){
+    for(int i=0; i<N; i++){
         for(int j=0; j<edge.size(); j++){
             int s=edge[j].first.first;
             int e=edge[j].first.second;
             int t=edge[j].second;
             
             if(dist[s]+t<dist[e]){
+                if(i==N-1) return true;
                 dist[e]=dist[s]+t;
             }
-        }
-    }
-    
-    for(int i=0; i<edge.size(); i++){
-        int s=edge[i].first.first;
-        int e=edge[i].first.second;
-        int t=edge[i].second;
-        
-        if(dist[s]+t<dist[e]){
-            return true;
         }
     }
     
@@ -79,7 +68,7 @@ int main()
             addEdge(S, E, -T);
         }
         
-        bool ans=solve(1);
+        bool ans=solve();
         if(ans) cout<<"YES\n";
         else cout<<"NO\n";
         
