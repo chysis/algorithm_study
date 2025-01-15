@@ -4,29 +4,12 @@
 #include <queue>
 
 #define INF (~0U>>2)
+#define pii pair<int, int>
 using namespace std;
 
 int N, M, V1, V2, dist[10001];
-vector<pair<int, int>> adj[10001];
-priority_queue<pair<int, int>, vector<pair<int, int>>, less<pair<int, int>>> pq;
-
-void addEdge(int s, int e, int c){
-    bool updated=false;
-    
-    for(auto& ed: adj[s]){
-        if(ed.first==e){
-            if(ed.second<c){
-                ed.second=c;
-            }
-            updated=true;
-            break;
-        }
-    }
-    
-    if(!updated){
-        adj[s].push_back({e, c});
-    }
-}
+vector<pii> adj[10001];
+priority_queue<pii, vector<pii>, less<pii>> pq;
 
 void solve(){
     dist[V1]=INF;
