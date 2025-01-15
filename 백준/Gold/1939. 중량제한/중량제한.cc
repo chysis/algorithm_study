@@ -65,8 +65,8 @@ int main()
     for(int i=0; i<M; i++){
         int A, B, C;
         cin>>A>>B>>C;
-        addEdge(A, B, C);
-        addEdge(B, A, C);
+        adj[A].push_back({B, C});
+        adj[B].push_back({A, C});
     }
     
     cin>>V1>>V2;
