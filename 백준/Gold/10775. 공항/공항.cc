@@ -1,8 +1,7 @@
 #include <iostream>
-#include <algorithm>
 using namespace std;
 
-int G, P, maxG=-1, g[100001], dock[100001];
+int G, P, g[100001], dock[100001];
 bool used[100001];
 
 int main()
