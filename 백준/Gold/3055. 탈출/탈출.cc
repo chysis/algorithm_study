@@ -9,7 +9,7 @@ int dy[4]={0, 0, -1, 1};
 char map[51][51];
 deque<pair<int, pair<int, int>>> d;
 deque<pair<int, int>> w;
-bool done, dVisited[51][51], wVisited[51][51], nextWater[51][51];
+bool done, dVisited[51][51], wVisited[51][51];
 
 int moveDochi(){
     int rep=d.size();
@@ -32,8 +32,7 @@ int moveDochi(){
             if(nx<0 || ny<0 || nx>=R || ny>=C) continue;
             if(dVisited[nx][ny]) continue;
             if(map[nx][ny]=='X' || map[nx][ny]=='*') continue;
-            if(nextWater[nx][ny]) continue;
-            
+
             d.push_back({cnt+1, {nx, ny}});
             dVisited[nx][ny]=true;
             map[nx][ny]='S';
@@ -66,49 +65,6 @@ void moveWater(){
     }
 }
 
-void calculateNextWater(){
-    deque<pair<int, int>> wTemp;
-
-    for(int i=0; i<w.size(); i++){
-        wTemp.push_back(w[i]);
-    }
-    
-    int rep=wTemp.size();
-    for(int i=0; i<rep; i++){
-        int x=wTemp[i].first;
-        int y=wTemp[i].second;
-        
-        for(int j=0; j<4; j++){
-            int nx=x+dx[i];
-            int ny=y+dy[i];
-            if(nx<0 || ny<0 || nx>=R || ny>=C) continue;
-            if(map[nx][ny]=='D') continue;
-            
-            nextWater[nx][ny]=true;
-        }
-    }
-    
-    wTemp.clear();
-}
-
-void clearNextWater(){
-    for(int i=0; i<R; i++){
-        for(int j=0; j<C; j++){
-            nextWater[i][j]=false;
-        }
-    }
-}
-
-void print(){
-    for(int i=0; i<R; i++){
-        for(int j=0; j<C; j++){
-            cout<<map[i][j];
-        }
-        cout<<"\n";
-    }
-    cout<<"\n\n";
-}
-
 int main()
 {
     ios::sync_with_stdio(false);
@@ -132,7 +88,6 @@ int main()
     
     while(true){
         moveWater();
-        // calculateNextWater();
         int sig=moveDochi();
         if(sig==-1 && !done){
             cout<<"KAKTUS";
@@ -142,8 +97,5 @@ int main()
             cout<<sig;
             break;
         }
-        
-        clearNextWater();
-        // print();
     }
 }
