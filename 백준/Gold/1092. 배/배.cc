@@ -46,11 +46,6 @@ int main()
         bound_cnt[i]=upper_bound(weight, weight+M, limit[i])-lower_bound(weight, weight+M, limit[i-1]+1);
     }
     
-    // for(int i=1; i<=N; i++){
-    //     cout<<bound_cnt[i]<<" ";
-    // }
-    // cout<<"\n";
-    
     minOffset=lower_bound(limit, limit+N+1, weight[0])-limit;
     
     int cnt=0;
@@ -61,11 +56,6 @@ int main()
             bound_cnt[i]--;
         }
         cnt++;
-        
-        // for(int i=minOffset; i<=N; i++){
-        //     cout<<bound_cnt[i]<<" ";
-        // }
-        // cout<<"\n";
     }
     
     cout<<cnt;
