@@ -1,20 +1,17 @@
 #include <iostream>
 #include <algorithm>
-#include <memory.h>
 using namespace std;
 
 int N, M, available[501][501];
 char map[501][501];
-bool visited[501][501];
 int dx[4]={-1, 1, 0, 0};
 int dy[4]={0, 0, -1, 1};
 
 int solve(int x, int y){
     if(available[x][y]!=-1) return available[x][y];
-    if(visited[x][y]) return 0;
     
     int& temp=available[x][y];
-    visited[x][y]=true;
+    temp=0;
     
     int nx, ny;
     if(map[x][y]=='D') nx=x+dx[1], ny=y+dy[1];
@@ -28,8 +25,7 @@ int solve(int x, int y){
     }
     
     temp=solve(nx, ny);
-    visited[x][y]=false;
-    
+
     return temp;
 }
 
