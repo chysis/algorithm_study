@@ -1,7 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
-#include <vector>
 #include <set>
 using namespace std;
 
@@ -10,7 +9,7 @@ set<char> arr[51];
 bool chk[51][27], appear[27], visited[27];
 
 void solve(int c, int prev){
-    if(c==min(K-5, appearCnt)){
+    if(c==min(K-5, appearCnt)){ // K-5개를 학습하거나 입력에 등장하는 총 알파벳 가지수만큼 골랐을 때
         bool chkCopy[51][27];
         // chk 복사
         for(int i=0; i<cnt; i++){
@@ -42,14 +41,6 @@ void solve(int c, int prev){
         
         // temp 최댓값 갱신
         temp=max(temp, tempCnt);
-        // if(temp<tempCnt){
-        //     temp=tempCnt;
-        //     cout<<"selected: \n";
-        //     for(int i=0; i<c; i++){
-        //         cout<<selected[i]<<" ";
-        //     }
-        //     cout<<"\n";
-        // }
         
         return;
     }
@@ -114,21 +105,6 @@ int main()
         if(appear[i]) appearCnt++;
     }
     
-    // cout<<"appear: \n";
-    // for(int i=0; i<26; i++){
-    //     if(appear[i]) cout<<i<<" ";
-    // }
-    // cout<<"\n";
-    
     solve(0, 0);
-    
-    // for(int i=0; i<cnt; i++){
-    //     for(int j=0; j<26; j++){
-    //         cout<<chk[i][j]<<" ";
-    //     }
-    //     cout<<"\n";
-    // }
-    // cout<<"\n";
-    
     cout<<ans+temp;
 }
