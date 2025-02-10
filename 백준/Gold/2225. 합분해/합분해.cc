@@ -3,7 +3,7 @@
 #define MOD 1000000000
 using namespace std;
 
-int N, K, dp[301][301];
+int N, K, dp[201][201];
 
 int main()
 {
