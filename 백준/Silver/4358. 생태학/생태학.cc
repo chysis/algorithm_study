@@ -10,10 +10,7 @@ int main()
     
     int cnt=0;
     string str;
-    while(true){
-        getline(cin, str);
-        if(cin.eof()) break;
-        
+    while(getline(cin, str)){
         cnt++;
         if(m.find(str)==m.end()){
             m[str]=1;
