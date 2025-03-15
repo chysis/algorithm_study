@@ -2,8 +2,7 @@
 #define MOD 1000000009
 using namespace std;
 
-int T, num;
-long long dp[100001][4];
+int T, num, dp[100001][4];
 
 int main() {
     ios::sync_with_stdio(false);
@@ -21,6 +20,6 @@ int main() {
     cin>>T;
     while(T--){
         cin>>num;
-        cout<<(dp[num][1]+dp[num][2]+dp[num][3])%MOD<<"\n";
+        cout<<((dp[num][1]+dp[num][2])%MOD+dp[num][3])%MOD<<"\n";
     }
 }
