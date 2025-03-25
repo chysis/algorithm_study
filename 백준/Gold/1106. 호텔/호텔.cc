@@ -30,7 +30,7 @@ int main()
     
     for(int i=1; i<=N; i++){
         for(int j=1; j<=C+100; j++){
-            if(j-arr[i].second>0) dp[i][j]=min({dp[i-1][j], arr[i].first+dp[i-1][j-arr[i].second], arr[i].first+dp[i][j-arr[i].second]});
+            if(j-arr[i].second>0) dp[i][j]=min({dp[i-1][j], arr[i].first+dp[i][j-arr[i].second]});
             else dp[i][j]=min(dp[i][j], dp[i-1][j]);
         }
     }
