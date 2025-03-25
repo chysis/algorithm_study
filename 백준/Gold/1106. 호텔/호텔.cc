@@ -2,7 +2,7 @@
 #define INF (~0U>>2)
 using namespace std;
 
-int C, N, dp[21][1101]; // dp[i][j]: i번째 마을까지 홍보해서 j명 늘리기 위해 필요한 최소 금액
+int C, N, dp[21][1101];
 pair<int, int> arr[21];
 
 int main()
@@ -24,25 +24,9 @@ int main()
         arr[i]={A, B};
     }
     
-    // for(int i=0; i<=N; i++){
-    //     dp[i][0]=0;
-    // }
-    
-    // for(int i=0; i<=C; i++){
-    //     dp[0][i]=0;
-    // }
-    
     for(int i=1; i<=N; i++){
         dp[i][arr[i].second]=arr[i].first;
     }
-    
-    // for(int i=0; i<=N; i++){
-    //     for(int j=0; j<=C; j++){
-    //         cout<<dp[i][j]<<" ";
-    //     }
-    //     cout<<"\n";
-    // }
-    // cout<<"\n";
     
     for(int i=1; i<=N; i++){
         for(int j=1; j<=C+100; j++){
@@ -50,14 +34,6 @@ int main()
             else dp[i][j]=min(dp[i][j], dp[i-1][j]);
         }
     }
-    
-    // for(int i=0; i<=N; i++){
-    //     for(int j=0; j<=C; j++){
-    //         cout<<dp[i][j]<<" ";
-    //     }
-    //     cout<<"\n";
-    // }
-    // cout<<"\n";
     
     int ans=INF;
     for(int i=C; i<=C+100; i++){
