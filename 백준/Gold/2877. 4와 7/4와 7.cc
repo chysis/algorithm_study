@@ -16,7 +16,7 @@ int main()
         }
     }
     
-    newK=(dig==1 ? K-1 : K-pow(2, dig)+1);
+    newK=K-pow(2, dig)+1;
 
     vector<int> v;
     while(newK>0){
