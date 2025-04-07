@@ -1,17 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int N, hp[21], happy[21], ans;
+int N, hp[21], happy[21], dp[21][101];
 
-void solve(int cnt, int curHp, int curHappy){
-    if(cnt==N){
-        ans=max(ans, curHappy);
-        return;
-    }
-
-    solve(cnt+1, curHp, curHappy);
+int solve(int cnt, int curHp){
+    if(dp[cnt][curHp]) return dp[cnt][curHp];
+    if(cnt==N) return 0;
     
-    if(curHp-hp[cnt]>0) solve(cnt+1, curHp-hp[cnt], curHappy+happy[cnt]);
+    int& temp=dp[cnt][curHp];
+
+    if(curHp-hp[cnt]>0) temp=solve(cnt+1, curHp-hp[cnt])+happy[cnt];
+    
+    int temp2=solve(cnt+1, curHp);
+    temp=max(temp, temp2);
+    return temp;
 }
 
 int main()
@@ -28,6 +30,5 @@ int main()
         cin>>happy[i];
     }
     
-    solve(0, 100, 0);
-    cout<<ans;
+    cout<<solve(0, 100);
 }
