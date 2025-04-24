@@ -2,11 +2,12 @@
 #define INF (~0U>>2)
 using namespace std;
 
-int V, E, P, A, B, C,  dist[5001];
+int V, E, P, A, B, C, dist[5001];
 vector<pair<int, int>> adj[5001];
-priority_queue<pair<int, int>> pq;
+priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
 
-void initDist(){
+void init(){
+    pq={};
     for(int i=1; i<=V; i++){
         dist[i]=INF;
     }
@@ -26,6 +27,7 @@ void solve(int start){
         for(auto next: adj[curNode]){
             int nextNode=next.first;
             int nextDist=curDist+next.second;
+            
             if(nextDist<dist[nextNode]){
                 dist[nextNode]=nextDist;
                 pq.push({nextDist, nextNode});
@@ -40,7 +42,7 @@ int main()
     cin.tie(nullptr);
     
     cin>>V>>E>>P;
-    initDist();
+    init();
     
     for(int i=0; i<E; i++){
         cin>>A>>B>>C;
@@ -53,7 +55,7 @@ int main()
     minVal=dist[V];
     partA=dist[P];
     
-    initDist();
+    init();
     solve(P);
     partB=dist[V];
     
