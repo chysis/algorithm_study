@@ -18,8 +18,8 @@ int main()
     cin>>N;
     for(int i=0; i<N; i++){
         cin>>S>>E;
-        minVal=min({minVal, S, E});
-        maxVal=max({maxVal, S, E});
+        minVal=min({minVal, S});
+        maxVal=max({maxVal, E});
         arr[i]={S, E};
     }
     
@@ -41,6 +41,5 @@ int main()
             tempLen=tempVal=0;
         }
     }
-    
     cout<<ans;
 }
