@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    
+    int T, N, C;
+    cin>>T;
+    while(T--){
+        cin>>N>>C;
+        if(N%C==0) cout<<N/C<<"\n";
+        else cout<<(N/C+1)<<"\n";
+    }
+}
