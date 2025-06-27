@@ -1,37 +1,42 @@
-#include <iostream>
-#include <algorithm>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
 
-int arr[200001];
+int N, H, M, arr[200001];
+char c;
 
 int main()
 {
     ios::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
+    cin.tie(nullptr);
     
-    int N;
     cin>>N;
     for(int i=0; i<N; i++){
-        int h, m;
-        char c;
-        cin>>h>>c>>m;
-        arr[i]=h*60+m;
+        cin>>H>>c>>M;
+        arr[i]=H*60+M;
     }
     
     sort(arr, arr+N);
     
-    int ans=0, temp=1;
-    for(int i=1; i<N; i++){
-        if(arr[i]-arr[i-1]<=10){
+    int s=0, ans=0, temp=0;
+    for(int i=0; i<N; i++){
+        if(i==0){
+            ans++;
+            s=arr[i];
             temp++;
+        }else{
             if(temp==3){
                 ans++;
+                s=arr[i];
                 temp=1;
+            }else{
+                if(arr[i]-s>20){
+                    ans++;
+                    s=arr[i];
+                    temp=1;
+                }else{
+                    temp++;
+                }
             }
-        } else{
-            ans++;
-            temp=1;
         }
     }
     
