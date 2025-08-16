@@ -1,18 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int N, M, X, A, B, pre=0;
-vector<int> adj[100001];
+int N, M, X, A, B;
+vector<int> adj[100001], adj2[100001];
 queue<int> q;
 bool visited[100001];
 
-int bfs(){
+int bfs(bool isBack){
     int cnt=0;
     while(!q.empty()){
         int cur=q.front();
         q.pop();
         
-        for(auto next: adj[cur]){
+        for(auto next: (isBack ? adj2[cur] : adj[cur])){
             if(visited[next]) continue;
             visited[next]=true;
             q.push(next);
@@ -31,11 +31,14 @@ int main()
     for(int i=0; i<M; i++){
         cin>>A>>B;
         adj[A].push_back(B);
-        if(B==X) pre++;
+        adj2[B].push_back(A);
     }
     
     q.push(X);
-    int res=bfs();
+    int after=bfs(false);
+    q={};
     
-    cout<<1+pre<<" "<<N-res;
+    q.push(X);
+    int before=bfs(true);
+    cout<<1+before<<" "<<N-after;
 }
