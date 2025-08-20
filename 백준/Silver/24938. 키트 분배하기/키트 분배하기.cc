@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int N, arr[200001], total=0, ans=0;
+long long N, arr[200001], total=0, ans=0;
 
 int main()
 {
@@ -11,7 +11,7 @@ int main()
     cin>>N;
     for(int i=0; i<N; i++) cin>>arr[i], total+=arr[i];
     
-    int target=total/N;
+    long long target=total/N;
 
     for(int i=0; i<N-1; i++){
         if(arr[i]<target){
