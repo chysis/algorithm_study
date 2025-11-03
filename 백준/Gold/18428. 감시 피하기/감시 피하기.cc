@@ -4,8 +4,6 @@ using namespace std;
 int N, sel[3];
 vector<pair<int, int>> T;
 char arr[7][7];
-int dx[4]={-1, 1, 0, 0};
-int dy[4]={0, 0, -1, 1};
 bool flag=false, visited[7][7];
 
 bool isValid(){
